@@ -40,7 +40,7 @@ See instructions section below for more in depth information on the steps.
         - 2. test and find the optimal layout of neurons and hidden layers. 
             - Finally, the tuner was allowed to trial test to find the optimal layout from 3-8 hidden layers and 30-80 neurons per layer. Any further hidden layers did not result in any benefit and any further neurons contributed to a model that required too much computing power. 
 
-            ` ` `
+            ``` 
             initial activation: tanh
             first_units: 80
             num_layers: 3
@@ -52,7 +52,7 @@ See instructions section below for more in depth information on the steps.
             units_2: 75
             layer_activation_3: tanh
             units_3: 30
-            ` ` ` 
+            ``` 
 
     - Were you able to achieve the target model performance?
 
