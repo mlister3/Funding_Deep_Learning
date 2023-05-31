@@ -126,3 +126,11 @@ Download your Colab notebooks to your computer.
 Move them into your Deep Learning Challenge directory in your local repository.
 
 Push the added files to GitHub.
+
+- - - 
+
+## References
+
+IRS. Tax Exempt Organization Search Bulk Data Downloads. [https://www.irs.gov/](https://www.irs.gov/).
+
+- - - 
