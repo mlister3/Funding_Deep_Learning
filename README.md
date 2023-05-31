@@ -2,7 +2,67 @@
 
 - - -
 
-- - -
+## Overview of the Analysis
+
+- Purpose
+
+- What is being predicted?
+
+- Goal
+
+- Steps
+1. 
+
+See instructions section below for more in depth information on the steps.
+
+- Measuring
+
+## Results
+
+- Data Preprocessing
+
+    - What variable(s) are the target(s) for your model?
+        - The target variable is the `IS_SUCCESSFUL` column in the dataset which has either a `1` or a `0` meaning successful use of funding or not respectively.
+
+    - What variable(s) are the features for your model?
+        - After dropping the `IS_SUCCESSFUL`, `EIN`, and `NAME` columns, the remaining columns serve as variables/features in the subsequent models.
+
+    - What variable(s) should be removed from the input data because they are neither targets nor features?
+        - Specific variables prior to putting the data through a hot-ended filter are not removed from the dataset outside of `EIN`, and `NAME` columns meantioned earlier. Lasso and Ridge tests were compared to a PCA text to reduce the data size while retaining as much of the explained variance as possible. Ultimately these two methods do similar preprocessing to the data so both were used together in conjunction with setting boundries using ~1.5x the interquartile range of the values in the `ASK_AMT` column to preprocess the data.
+
+- Compiling, Training, and Evaluating the Model
+
+    - How many neurons, layers, and activation functions did you select for your neural network model, and why?
+        - While preprocessing, I maintained using the default prescribed model parameters of 80 neurons on the initial layer, 30 for the 1 hidden layer, and 1 for the output layer using `relu`, `relu`, `sigmoid` respectively. 
+        - To find the optimal selection of neurons, layers, and activation functions, I used Keras Tuner in two phases: 
+        - 1. limiting down and eliminating activation functions that did not improve the model.
+            - The tuner was allowed to select any activation function for the first and hidden layers. The output layer was always 1 neuron with a `sigmoid` activation function. `leaky_relu`, `tanh`, `selu`, `elu`, & `sigmoid` were all eliminated from the pool based off the tuner trials. `relu` was eliminated from the initial layer but not from the hidden layers.
+        - 2. test and find the optimal layout of neurons and hidden layers. 
+            - Finally, the tuner was allowed to trial test to find the optimal layout from 3-8 hidden layers and 30-80 neurons per layer. Any further hidden layers did not result in any benefit and any further neurons contributed to a model that required too much computing power. 
+
+            ` ` `
+            initial activation: tanh
+            first_units: 80
+            num_layers: 3
+            layer_activation_0: tanh
+            units_0: 50
+            layer_activation_1: relu
+            units_1: 55
+            layer_activation_2: relu
+            units_2: 75
+            layer_activation_3: tanh
+            units_3: 30
+            ` ` ` 
+
+    - Were you able to achieve the target model performance?
+
+    - What steps did you take in your attempts to increase model performance?
+
+## Summary
+
+Summarize the overall results of the deep learning model. Include a recommendation for how a different model could solve this classification problem, and then explain your recommendation.
+
+* 
 
 - - -
 
@@ -134,3 +194,5 @@ Push the added files to GitHub.
 IRS. Tax Exempt Organization Search Bulk Data Downloads. [https://www.irs.gov/](https://www.irs.gov/).
 
 - - - 
+
+© 2023 edX Boot Camps LLC
