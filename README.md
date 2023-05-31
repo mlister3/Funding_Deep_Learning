@@ -34,6 +34,8 @@
     - What variable(s) should be removed from the input data because they are neither targets nor features?
         - Specific variables prior to putting the data through a hot-ended filter are not removed from the dataset outside of `EIN`, and `NAME` columns meantioned earlier. Lasso and Ridge tests were compared to a PCA text to reduce the data size while retaining as much of the explained variance as possible. Ultimately these two methods do similar preprocessing to the data so both were used together in conjunction with setting boundries using ~1.5x the interquartile range of the values in the `ASK_AMT` column to preprocess the data.
 
+        ![IQR](/data_pictures/ASK_AMT_spread.png)
+
 - Compiling, Training, and Evaluating the Model
 
     - How many neurons, layers, and activation functions did you select for your neural network model, and why?
@@ -64,9 +66,20 @@
     - What steps did you take in your attempts to increase model performance?
         - methods used include:
         1. Lasso and Ridge tests to drop low impact columns.
+
+        ![Dropped_Columns](/data_pictures/droppedcolumns_model.png)
+
         2. PCA the data to reduce scaled data columns down to 35 columns for 100% explained variance, 20 columns for 70% explained variance with a model performance boost.
+
+        ![PCA](/data_pictures/pca_model.png)
+
         3. Oversampling by comparing the use of RandomOverSampler and SMOTE oversampler. SMOTE in this case caused more inaccuracy in the validation test. It is possible that the synthetic samples are not accurately respresenting the actual data. RandomOverSampler copying samples did increase the accuracy marginally.
+
+        ![Oversampled](/data_pictures/oversampled_model.png)
+
         4. Altering the model's activation function, layer count, and per layer neuron count via Keras Tuner.
+
+        ![OptimizedNN](/data_pictures/optimizednn_model.png)
 
 ## Summary
 
